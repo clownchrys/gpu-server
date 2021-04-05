@@ -1,0 +1,105 @@
+version: "3.6"
+services: 
+
+  nginx:
+    image: nginx:1.13.5
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes: 
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on: 
+      - cuda_server_0
+      - cuda_server_1
+      - cuda_server_2
+      - cuda_server_3
+    networks: 
+      - cuda_backend
+
+  cuda_server_0:
+    image: cuda_server
+    container_name: cuda_0
+    build:
+      context: cuda_server
+    working_dir: /usr/src/app
+    ports:
+      - 4000:4000
+    volumes: 
+      - ./cuda_server:/usr/src/app
+    env_file:
+      - envs/cuda_server.env
+    environment: 
+      - CUDA_DEVICE_ORDER=PCI_BUS_ID
+      - CUDA_VISIBLE_DEVICES=0
+    command: python manage.py run -h 0.0.0.0 -p 4000
+    runtime: nvidia
+    restart: always
+    networks:
+      - cuda_backend
+
+  cuda_server_1:
+    image: cuda_server
+    container_name: cuda_1
+    build:
+      context: ./cuda_server
+    working_dir: /usr/src/app
+    ports:
+      - 4001:4000
+    volumes: 
+      - ./cuda_server:/usr/src/app
+    env_file:
+      - ./envs/cuda_server.env
+    environment: 
+      - CUDA_DEVICE_ORDER=PCI_BUS_ID
+      - CUDA_VISIBLE_DEVICES=1
+    command: python manage.py run -h 0.0.0.0 -p 4000
+    runtime: nvidia
+    restart: always
+    networks:
+      - cuda_backend
+
+  cuda_server_2:
+    image: cuda_server
+    container_name: cuda_2
+    build:
+      context: ./cuda_server
+    working_dir: /usr/src/app
+    ports:
+      - 4002:4000
+    volumes: 
+      - ./cuda_server:/usr/src/app
+    env_file:
+      - ./envs/cuda_server.env
+    environment: 
+      - CUDA_DEVICE_ORDER=PCI_BUS_ID
+      - CUDA_VISIBLE_DEVICES=2
+    command: python manage.py run -h 0.0.0.0 -p 4000
+    runtime: nvidia
+    restart: always
+    networks:
+      - cuda_backend
+
+  cuda_server_3:
+    image: cuda_server
+    container_name: cuda_3
+    build:
+      context: ./cuda_server
+    working_dir: /usr/src/app
+    ports:
+      - 4003:4000
+    volumes: 
+      - ./cuda_server:/usr/src/app
+    env_file:
+      - ./envs/cuda_server.env
+    environment: 
+      - CUDA_DEVICE_ORDER=PCI_BUS_ID
+      - CUDA_VISIBLE_DEVICES=3
+    command: python manage.py run -h 0.0.0.0 -p 4000
+    runtime: nvidia
+    restart: always
+    networks:
+      - cuda_backend
+
+networks:
+  cuda_backend:
+    name: cuda_backend

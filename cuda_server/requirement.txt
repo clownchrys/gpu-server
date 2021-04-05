@@ -1,0 +1,8 @@
+scipy==1.6.2
+numpy==1.20.2
+Pillow==8.1.2
+scikit-image==0.18.1
+python-bidi==0.4.2
+PyYAML==5.4.1
+gunicorn==19.9.0
+flask==1.1.2

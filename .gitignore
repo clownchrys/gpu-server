@@ -1,0 +1,109 @@
+*.ipynb
+*.py[co]
+*.pyc
+*.DS_*
+
+# Packages
+*.egg
+*.egg-info
+dist
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+__pycache__
+.serverless
+.requirements.zip
+proxy_auth_plugin.zip
+
+#pycharm 
+*.xml
+*.iml
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+#Mr Developer
+venv
+bower_components
+node_modules
+logs
+
+#Settings File
+credentials.json
+spreadsheet.json
+token.json
+access_token.json
+
+#toolarge csv file
+es_goods.csv
+es_goodsOption.csv 
+es_scmManage.csv
+es_with_cate.csv
+
+#envfiles
+.aws.env
+.spark_production.env
+.secrets.env
+.airflow_secret.env
+.aws_secret.env
+.mongo_aws.env
+.mongo_secret.env 
+.postgres_google.env
+.postgres_aws.env
+.postgres_production.env
+.redis_uri_aws.env
+.redis_uri_google.env
+.godomall_secret.env
+.payple_secret.env
+.kafka_google.env
+.crawling_login_secret.env
+env_files/
+
+#notebook
+notebook/
+spark/spark-2-getting-started
+.ipynb_checkpoints
+.env
+.alli_secret.env
+.usersecret.env
+envfiles/personal/
+.proxy_secret.env
+#userimages
+userinteraction/userprofile/user_image_folder/*.jpg
+research_note
+!AlliDataCrawler.ipynb
+!notebook/utils
+!notebook/googledriver
+seleniumLayer
+gui_crawler
+practice_notebook
+practice_notebook/*
+
+#migration json 
+fixture.json
+.userinteraction_google.env
+
+# IDE
+.idea/
+.vscode
+.devcontainer/
+
+# pyenv
+.python-version
+
+# direnv
+.envrc
+*.pem
+userinteraction/staticfiles/ckeditor
+userinteraction/staticfiles
